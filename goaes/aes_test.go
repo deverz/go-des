@@ -6,7 +6,7 @@ import (
 
 /*
  * @Desc:
- * @Author: zhangbingbing2@tal.com
+ * @Author: deverz@qq.com
  * @File: goaes/aes_test.go.go
  * @Date: 2022/2/10 2:53 下午
  */
