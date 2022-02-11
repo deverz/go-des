@@ -37,12 +37,11 @@ func unPKCS7Padding(encryptData []byte) []byte {
 // AesCBCEncrypt aes cbc 加密
 // sourceData 要加密的数据
 // key 秘钥：16位 24位 32位 对应：aes-128 aes-192 aes-256
-func AesCBCEncrypt(sourceData, key []byte) ([]byte, error) {
+func AesCBCEncrypt(sourceData, key []byte) (data []byte, err error) {
 	// 捕捉panic
 	defer func() {
-		err := recover()
-		if err != nil {
-			fmt.Println("aes encrypt panic:", err)
+		if e := recover(); e != nil {
+			err = fmt.Errorf("aes encrypt panic:%+v", e)
 		}
 	}()
 	block, err := aes.NewCipher(key)
@@ -66,12 +65,11 @@ func AesCBCEncrypt(sourceData, key []byte) ([]byte, error) {
 }
 
 // AesCBCDecrypt aes cbc 解密
-func AesCBCDecrypt(encryptData, key []byte) ([]byte, error) {
+func AesCBCDecrypt(encryptData, key []byte) (data []byte, err error) {
 	// 捕捉panic
 	defer func() {
-		err := recover()
-		if err != nil {
-			fmt.Println("aes decrypt panic:", err)
+		if e := recover(); e != nil {
+			err = fmt.Errorf("aes decrypt panic:%+v", e)
 		}
 	}()
 	block, err := aes.NewCipher(key)
