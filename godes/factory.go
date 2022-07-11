@@ -2,7 +2,7 @@ package godes
 
 import "github.com/deverz/go-des/godes/internal"
 
-func MakeDES(t int, key ...[]byte) IDESInterface {
+func MakeDES(t DesType, key ...[]byte) IDESInterface {
 	switch t {
 	case AesCBC7:
 		if len(key) == 0 {
